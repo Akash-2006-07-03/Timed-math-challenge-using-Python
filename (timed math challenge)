@@ -1,0 +1,35 @@
+'''project for timed math challenge'''
+
+import random
+import time
+
+NO_QUESTIONS=10
+OPERATORS=["+","-","*"]
+START_VAL=1
+END_VAL=10
+
+def ques_gen():
+    left=random.randint(START_VAL,END_VAL)
+    right=random.randint(START_VAL,END_VAL)
+    opr=random.choice(OPERATORS)
+    exp=str(left) + " " + opr + " " + str(right)
+    ans=eval(exp)
+    return exp,ans
+
+point=0
+input("Press any key to start")
+print("----------------------")
+start_time=time.time()
+
+for i in range(NO_QUESTIONS):
+    exp,ans=ques_gen()
+    answer=int(input(str(exp) + " : "))
+    if answer==ans:
+        point+=1
+end_time=time.time()
+total_time=round(end_time-start_time,2)
+print("You completed the challenge in ",total_time,"sec with ",point," points")
+print("-----------------------------------------------------------")
+    
+
+    
